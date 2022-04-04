@@ -94,16 +94,31 @@ public class StringEx {
         Integer counter4 = testString.split("\\W+").length;
         System.out.println("Подсчет количества слов в строке: " + counter4);
 //    Добавление пробелов в строку
-
-
+        StringBuilder addSpaceBuilder = new StringBuilder();
+        for (int i = 0; i < stringArray.length; i++) {
+            addSpaceBuilder.append(stringArray[i] + " ");
+        }
+        String withSpaces = addSpaceBuilder.toString();
+        System.out.println("Добавление пробелов в строку: " + withSpaces);
 //    Является ли строка палиндром?
-
-
+        String pallindrom = "redivider";
+        String answerForPallindrom = "Да";
+        int end = pallindrom.length() - 1;
+        for (int i = 0; i < pallindrom.length(); i++) {
+            if (pallindrom.charAt(i) != pallindrom.charAt(end--)) {
+                answerForPallindrom = "Нет";
+            }
+        }
+        System.out.println("Является ли строка " + pallindrom + " палиндром? " + answerForPallindrom);
 //    Замена подстроки в строке
-
+        String substringForSwapping = "qwerty";
+        String substringForRemoving = stringArray[3];
+        System.out.println("Замена подстроки в строке: " + testString.replace(substringForRemoving, substringForSwapping));
 
 //    Расстояние между подстроками
-
-
+        int firstIndex = testString.indexOf(stringArray[1]) + stringArray[1].length();
+        int secIndex = testString.indexOf(stringArray[4]);
+        int distanceBwSubs = secIndex - firstIndex;
+        System.out.println("Расстояние между подстроками - " + stringArray[1] + " и " + stringArray[4] + " = " + distanceBwSubs);
     }
 }
