@@ -3,6 +3,7 @@ package kz.didarakulov.hwjavapractice.stringchapter;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class StringEx {
     public static void main(String[] args) {
@@ -60,20 +61,38 @@ public class StringEx {
         String reverse = revertString.reverse().toString();
         System.out.println("Переворот строки: " + reverse);
 //    Количество вхождений подстроки в строку
-
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Input string: ");
+//        String inputString = scanner.next();
+//        scanner.close();
+        String inputString = "This";
+        Pattern pattern3 = Pattern.compile(inputString);
+        Matcher matcher3 = pattern3.matcher(testString);
+        Integer counter3 = 0;
+        while (matcher3.find()) {
+            counter3++;
+        }
+        System.out.println("Количество вхождений подстроки в строку: " + counter3);
 
 //    Вывести слова строки в обратном порядке
-
+        String[] stringArray = testString.split(" ");
+        StringBuilder sbForAppend = new StringBuilder();
+        StringBuilder sbForReverse;
+        for (int i = 0; i < stringArray.length; i++) {
+            sbForReverse = new StringBuilder(stringArray[i]);
+            sbForAppend.append(sbForReverse.reverse() + " ");
+        }
+        System.out.println("Вывести слова строки в обратном порядке: " + sbForAppend.toString());
 
 //    Сортировка массива строк по алфавиту
-
-
+        List<String> sortedStringArray = Arrays.stream(stringArray).sorted(String.CASE_INSENSITIVE_ORDER).collect(Collectors.toList());
+        System.out.println(sortedStringArray);
 //    Определить длину самого короткого слова в строке
-
-
+        int shortestString = Arrays.stream(stringArray).mapToInt(s -> s.length()).min().orElse(-1);
+        System.out.println("Определить длину самого короткого слова в строке: " + shortestString);
 //    Подсчет количества слов в строке
-
-
+        Integer counter4 = testString.split("\\W+").length;
+        System.out.println("Подсчет количества слов в строке: " + counter4);
 //    Добавление пробелов в строку
 
 
@@ -84,5 +103,7 @@ public class StringEx {
 
 
 //    Расстояние между подстроками
+
+
     }
 }
